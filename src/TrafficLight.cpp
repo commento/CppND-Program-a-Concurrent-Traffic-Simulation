@@ -57,8 +57,8 @@ void TrafficLight::waitForGreen()
     // Once it receives TrafficLightPhase::green, the method returns.
     while(true)
     {
-        TrafficLightPhase tlp = _queue.receive();
-        if (TrafficLightPhase::green == tlp)
+        _currentPhase = _queue.receive();
+        if (TrafficLightPhase::green == _currentPhase)
             return;
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
